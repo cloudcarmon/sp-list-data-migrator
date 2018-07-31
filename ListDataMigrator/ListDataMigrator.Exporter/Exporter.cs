@@ -1,32 +1,30 @@
 ﻿using ListDataMigrator.Common;
-using ListDataMigrator.Importer.Models;
+using ListDataMigrator.Exporter.Models;
 using ListDataMigrator.SharePoint;
 using ListDataMigrator.SharePoint.Models;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Caching;
 
-namespace ListDataMigrator.Importer
+namespace ListDataMigrator.Exporter
 {
-    public class Importer
+    public class Exporter
     {
-        public Importer(CommandLineArguments args)
+        public Exporter(CommandLineArguments args)
         {
             ObjectCache cache = MemoryCache.Default;
             CacheItemPolicy policy = new CacheItemPolicy();
 
-            var userInformationList = JsonUtility.FromFile<Dictionary<string, UserInformation>>(args.UserInformationListPath);
             var contentTypeMapping = JsonUtility.FromFile<List<ContentTypeMapping>>(args.ContentTypeMappingPath);
 
-            cache.Set(SharePointCacheKeys.USER_INFORMATION_LIST, userInformationList, policy);
             cache.Set(SharePointCacheKeys.CONTENT_TYPE_MAPPING, contentTypeMapping, policy);
-
-            cache.Set(CacheKeys.FILE_DIRECTORY, args.ExportedConfigDirectory, policy);
+            cache.Set(CacheKeys.FILE_DIRECTORY, args.OutputPath, policy);
+            // Json load export 
         }
 
         public void Run()
         {
-            Console.WriteLine("Running Importer...");
+            Console.WriteLine("Running Exporter...");
         }
     }
 }

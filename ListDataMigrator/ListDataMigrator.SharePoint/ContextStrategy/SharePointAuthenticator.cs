@@ -8,9 +8,6 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
     {
         public static void Connect()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("List Data Migrator");
-            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine("How would you like to connect to SharePoint?");
 

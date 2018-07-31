@@ -34,7 +34,7 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
             }
             if (string.IsNullOrEmpty(_username))
             {
-                Console.WriteLine("Email: ");
+                Console.WriteLine("Username: ");
                 _username = ConsoleUtility.ReadBlueLine();
             }
             

@@ -28,6 +28,9 @@ namespace ListDataMigrator.Importer
 
         private static void Run(CommandLineArguments args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("List Data Migrator - Import Tool");
+            Console.ResetColor();
             SharePointAuthenticator.Connect();
             SharePointCache.PrepareCache();
             var importer = new Importer(args);
