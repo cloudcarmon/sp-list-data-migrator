@@ -4,9 +4,9 @@ using System.Runtime.Caching;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
-    public class SharePointAuthenticator
+    public static class SharePointAuthenticator
     {
-        public void Connect()
+        public static void Connect()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("List Data Migrator");
@@ -48,7 +48,7 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
 
                 ObjectCache cache = MemoryCache.Default;
                 CacheItemPolicy policy = new CacheItemPolicy();
-                cache.Set("context", context, policy);
+                cache.Set(SharePointCacheKeys.SP_CONTEXT, context, policy);
             }
             else
             {

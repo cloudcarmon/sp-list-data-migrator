@@ -30,12 +30,12 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
             if (string.IsNullOrEmpty(_url))
             {
                 Console.WriteLine("Site URL: ");
-                _url = ConsoleUtility.ReadLine();
+                _url = ConsoleUtility.ReadBlueLine();
             }
             if (string.IsNullOrEmpty(_username))
             {
                 Console.WriteLine("Email: ");
-                _username = ConsoleUtility.ReadLine();
+                _username = ConsoleUtility.ReadBlueLine();
             }
             
             Console.WriteLine($"Password ({_username}): ");

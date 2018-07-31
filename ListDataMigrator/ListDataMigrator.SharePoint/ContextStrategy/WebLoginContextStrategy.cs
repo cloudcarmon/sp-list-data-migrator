@@ -25,7 +25,7 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
             {
                 Console.WriteLine("Please enter the following details to connect to SharePoint:");
                 Console.WriteLine("Site URL: ");
-                _url = ConsoleUtility.ReadLine();
+                _url = ConsoleUtility.ReadBlueLine();
             }
         }
     }

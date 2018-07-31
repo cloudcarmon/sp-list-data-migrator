@@ -5,7 +5,7 @@ namespace ListDataMigrator.Common
 {
     public static class ConsoleUtility
     {
-        public static string ReadLine()
+        public static string ReadBlueLine()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             string entry = Console.ReadLine();

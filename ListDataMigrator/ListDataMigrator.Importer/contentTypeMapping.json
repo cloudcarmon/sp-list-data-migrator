@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Item",
+    "fields": [
+      "ID",
+      "Title",
+      "ContentTypeId"
+    ],
+    "fieldMappings": {
+      "Title": {
+        "type": "text",
+        "destination": {
+          "type": "text",
+          "name": "Title"
+        }
+      }
+    }
+  }
+]

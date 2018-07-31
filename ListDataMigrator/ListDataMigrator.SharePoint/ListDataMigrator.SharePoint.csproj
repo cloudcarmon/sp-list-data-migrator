@@ -178,21 +178,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\SharePointCache.cs" />
     <Compile Include="ContextStrategy\AppOnlyContextStrategy.cs" />
     <Compile Include="ContextStrategy\BaseContextStrategy.cs" />
     <Compile Include="ContextStrategy\SharePointAuthenticator.cs" />
     <Compile Include="ContextStrategy\ContextStrategy.cs" />
     <Compile Include="ContextStrategy\NetworkCredentialContextStrategy.cs" />
     <Compile Include="ContextStrategy\WebLoginContextStrategy.cs" />
+    <Compile Include="Extensions\WebExtensions.cs" />
+    <Compile Include="Models\ContentTypeMapping.cs" />
+    <Compile Include="Models\FieldMapping.cs" />
+    <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CacheKeys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ListDataMigrator.Common\ListDataMigrator.Common.csproj">
       <Project>{E3584F0F-B49E-4ED7-93A3-5F72D849AE7A}</Project>

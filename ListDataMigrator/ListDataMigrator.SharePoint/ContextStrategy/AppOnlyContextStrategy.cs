@@ -33,19 +33,19 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
             if (string.IsNullOrEmpty(_url))
             {
                 Console.WriteLine("Site URL: ");
-                _url = ConsoleUtility.ReadLine();
+                _url = ConsoleUtility.ReadBlueLine();
             }
 
             if (string.IsNullOrEmpty(_clientId))
             {
                 Console.WriteLine("Client ID: ");
-                _clientId = ConsoleUtility.ReadLine();
+                _clientId = ConsoleUtility.ReadBlueLine();
             }
 
             if (string.IsNullOrEmpty(_clientSecret))
             {
                 Console.WriteLine("Client Secret: ");
-                _clientSecret = ConsoleUtility.ReadLine();
+                _clientSecret = ConsoleUtility.ReadBlueLine();
             }
         }
     }
