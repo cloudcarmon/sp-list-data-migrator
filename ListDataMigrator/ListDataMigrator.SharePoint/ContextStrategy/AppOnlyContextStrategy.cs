@@ -4,34 +4,28 @@ using System;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
-    public class AppOnlyContextStrategy : IContextStrategy
+    public class AppOnlyContextStrategy : BaseContextStrategy
     {
         private string _url;
         private string _clientId;
         private string _clientSecret;
 
-        public ClientContext GetContext()
+        public override ClientContext GetContext()
         {
             var authManager = new AuthenticationManager();
             var context = authManager.GetAppOnlyAuthenticatedContext(_url, _clientId, _clientSecret);
             return context;
         }
 
-        public void ProcessCommandLine()
+        public override void ProcessCommandLine()
         {
             Console.WriteLine("Please enter the following details to connect to SharePoint:");
             Console.WriteLine("Site URL: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _url = Console.ReadLine();
-            Console.ResetColor();
+            _url = ReadLine();
             Console.WriteLine("Client ID: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _clientId = Console.ReadLine();
-            Console.ResetColor();
+            _clientId = ReadLine();
             Console.WriteLine("Client Secret: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _clientSecret = Console.ReadLine();
-            Console.ResetColor();
+            _clientSecret = ReadLine();
         }
     }
 }

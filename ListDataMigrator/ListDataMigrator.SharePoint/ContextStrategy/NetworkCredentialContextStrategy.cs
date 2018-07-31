@@ -5,13 +5,13 @@ using System.Security;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
-    public class NetworkCredentialContextStrategy : IContextStrategy
+    public class NetworkCredentialContextStrategy : BaseContextStrategy
     {
         private string _url;
         private string _email;
         private SecureString _password;
 
-        public ClientContext GetContext()
+        public override ClientContext GetContext()
         {
             var context = new ClientContext(_url)
             {
@@ -20,17 +20,13 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
             return context;
         }
 
-        public void ProcessCommandLine()
+        public override void ProcessCommandLine()
         {
             Console.WriteLine("Please enter the following details to connect to SharePoint");
             Console.WriteLine("Site URL: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _url = Console.ReadLine();
-            Console.ResetColor();
+            _url = ReadLine();
             Console.WriteLine("Email: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _email = Console.ReadLine();
-            Console.ResetColor();
+            _email = ReadLine();
             Console.WriteLine("Password: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             _password = ConsoleUtility.ReadPasswordAsSecureString();

@@ -4,24 +4,22 @@ using System;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
-    public class WebLoginContextStrategy : IContextStrategy
+    public class WebLoginContextStrategy : BaseContextStrategy
     {
         private string _url;
 
-        public ClientContext GetContext()
+        public override ClientContext GetContext()
         {
             var authManager = new AuthenticationManager();
             var context = authManager.GetWebLoginClientContext(_url);
             return context;
         }
 
-        public void ProcessCommandLine()
+        public override void ProcessCommandLine()
         {
             Console.WriteLine("Please enter the following details to connect to SharePoint:");
             Console.WriteLine("Site URL: ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            _url = Console.ReadLine();
-            Console.ResetColor();
+            _url = ReadLine();
         }
     }
 }

@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextStrategy\AppOnlyContextStrategy.cs" />
+    <Compile Include="ContextStrategy\BaseContextStrategy.cs" />
     <Compile Include="ContextStrategy\SharePointAuthenticator.cs" />
     <Compile Include="ContextStrategy\ContextStrategy.cs" />
     <Compile Include="ContextStrategy\NetworkCredentialContextStrategy.cs" />
