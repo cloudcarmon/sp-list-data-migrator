@@ -1,7 +1,10 @@
 ﻿using CommandLine;
 using ListDataMigrator.Importer.Models;
 using ListDataMigrator.SharePoint.ContextStrategy;
+using Microsoft.SharePoint.Client;
 using System;
+using System.Runtime.Caching;
+using ListDataMigrator.Common.Extensions;
 
 namespace ListDataMigrator.Importer
 {
@@ -11,8 +14,7 @@ namespace ListDataMigrator.Importer
         {
             try
             {
-                Parser.Default.ParseArguments<CommandLineArguments>(args)
-                    .WithParsed(Run);
+                Parser.Default.ParseArguments<CommandLineArguments>(args).WithParsed(Run);
             }
             catch (Exception e)
             {
@@ -30,6 +32,14 @@ namespace ListDataMigrator.Importer
         {
             var auth = new SharePointAuthenticator();
             auth.Connect();
+
+            ObjectCache cache = MemoryCache.Default;
+            var context = cache.Get<ClientContext>("context");
+
+            context.Load(context.Web, w => w.Title);
+            context.ExecuteQuery();
+
+            Console.WriteLine(context.Web.Title);
         }
     }
 }

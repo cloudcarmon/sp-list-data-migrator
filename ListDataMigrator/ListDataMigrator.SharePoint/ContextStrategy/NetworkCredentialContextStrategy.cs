@@ -1,6 +1,7 @@
 ﻿using ListDataMigrator.Common;
 using Microsoft.SharePoint.Client;
 using System;
+using System.Configuration;
 using System.Security;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
@@ -8,14 +9,14 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
     public class NetworkCredentialContextStrategy : BaseContextStrategy
     {
         private string _url;
-        private string _email;
+        private string _username;
         private SecureString _password;
 
         public override ClientContext GetContext()
         {
             var context = new ClientContext(_url)
             {
-                Credentials = new SharePointOnlineCredentials(_email, _password)
+                Credentials = new SharePointOnlineCredentials(_username, _password)
             };
             return context;
         }
@@ -23,11 +24,21 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
         public override void ProcessCommandLine()
         {
             Console.WriteLine("Please enter the following details to connect to SharePoint");
-            Console.WriteLine("Site URL: ");
-            _url = ReadLine();
-            Console.WriteLine("Email: ");
-            _email = ReadLine();
-            Console.WriteLine("Password: ");
+            _url = ConfigurationManager.AppSettings["url"];
+            _username = ConfigurationManager.AppSettings["username"];
+
+            if (string.IsNullOrEmpty(_url))
+            {
+                Console.WriteLine("Site URL: ");
+                _url = ConsoleUtility.ReadLine();
+            }
+            if (string.IsNullOrEmpty(_username))
+            {
+                Console.WriteLine("Email: ");
+                _username = ConsoleUtility.ReadLine();
+            }
+            
+            Console.WriteLine($"Password ({_username}): ");
             Console.ForegroundColor = ConsoleColor.Blue;
             _password = ConsoleUtility.ReadPasswordAsSecureString();
             Console.ResetColor();

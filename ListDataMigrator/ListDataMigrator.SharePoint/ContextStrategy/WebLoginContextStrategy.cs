@@ -1,6 +1,8 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using ListDataMigrator.Common;
+using Microsoft.SharePoint.Client;
 using OfficeDevPnP.Core;
 using System;
+using System.Configuration;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
@@ -17,9 +19,14 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
 
         public override void ProcessCommandLine()
         {
-            Console.WriteLine("Please enter the following details to connect to SharePoint:");
-            Console.WriteLine("Site URL: ");
-            _url = ReadLine();
+            _url = ConfigurationManager.AppSettings["url"];
+
+            if (string.IsNullOrEmpty(_url))
+            {
+                Console.WriteLine("Please enter the following details to connect to SharePoint:");
+                Console.WriteLine("Site URL: ");
+                _url = ConsoleUtility.ReadLine();
+            }
         }
     }
 }

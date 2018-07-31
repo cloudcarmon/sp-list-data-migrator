@@ -7,13 +7,5 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
     {
         public abstract ClientContext GetContext();
         public abstract void ProcessCommandLine();
-
-        public string ReadLine()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            string entry = Console.ReadLine();
-            Console.ResetColor();
-            return entry;
-        }
     }
 }

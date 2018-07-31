@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 
 namespace ListDataMigrator.Common.Extensions
 {
@@ -17,6 +18,11 @@ namespace ListDataMigrator.Common.Extensions
                 result.Append(ch);
             }
             return result.ToString();
+        }
+
+        public static string GetSafeFilename(this string str)
+        {
+            return string.Join("_", str.Split(Path.GetInvalidFileNameChars()));
         }
     }
 }

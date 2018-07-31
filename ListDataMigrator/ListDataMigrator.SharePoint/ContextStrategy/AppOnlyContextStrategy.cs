@@ -1,6 +1,8 @@
-﻿using Microsoft.SharePoint.Client;
+﻿using ListDataMigrator.Common;
+using Microsoft.SharePoint.Client;
 using OfficeDevPnP.Core;
 using System;
+using System.Configuration;
 
 namespace ListDataMigrator.SharePoint.ContextStrategy
 {
@@ -18,14 +20,33 @@ namespace ListDataMigrator.SharePoint.ContextStrategy
         }
 
         public override void ProcessCommandLine()
-        {
-            Console.WriteLine("Please enter the following details to connect to SharePoint:");
-            Console.WriteLine("Site URL: ");
-            _url = ReadLine();
-            Console.WriteLine("Client ID: ");
-            _clientId = ReadLine();
-            Console.WriteLine("Client Secret: ");
-            _clientSecret = ReadLine();
+        {          
+            _url = ConfigurationManager.AppSettings["url"];
+            _clientId = ConfigurationManager.AppSettings["clientId"];
+            _clientSecret = ConfigurationManager.AppSettings["clientSecret"];
+
+            if (string.IsNullOrEmpty(_url) || string.IsNullOrEmpty(_clientId) || string.IsNullOrEmpty(_clientSecret))
+            {
+                Console.WriteLine("Please enter the following details to connect to SharePoint:");
+            }
+
+            if (string.IsNullOrEmpty(_url))
+            {
+                Console.WriteLine("Site URL: ");
+                _url = ConsoleUtility.ReadLine();
+            }
+
+            if (string.IsNullOrEmpty(_clientId))
+            {
+                Console.WriteLine("Client ID: ");
+                _clientId = ConsoleUtility.ReadLine();
+            }
+
+            if (string.IsNullOrEmpty(_clientSecret))
+            {
+                Console.WriteLine("Client Secret: ");
+                _clientSecret = ConsoleUtility.ReadLine();
+            }
         }
     }
 }

@@ -5,6 +5,14 @@ namespace ListDataMigrator.Common
 {
     public static class ConsoleUtility
     {
+        public static string ReadLine()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            string entry = Console.ReadLine();
+            Console.ResetColor();
+            return entry;
+        }
+
         public static SecureString ReadPasswordAsSecureString()
         {
             var password = new SecureString();
