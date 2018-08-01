@@ -1,0 +1,20 @@
+{
+  "lists": [
+    {
+      "source": {
+        "key": "/",
+        "webUrl": "/",
+        "listTitle": "Example List 1",
+        "contentTypeNames": [ "Example Document 1" ]
+      },
+      "destination": {
+        "type": "ItemToItem",
+        "webUrl": "/",
+        "listTitle": "Example List 2",
+        "contentTypeMapping": {
+          "Example Document 1": "Example Document 2"
+        }
+      }
+    }
+  ]
+}

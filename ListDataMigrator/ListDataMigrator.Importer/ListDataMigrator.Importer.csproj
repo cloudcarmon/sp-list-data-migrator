@@ -215,7 +215,6 @@
     <None Include="App.config" />
     <None Include="contentTypeMapping.json" />
     <None Include="packages.config" />
-    <None Include="sampleconfig.json" />
     <None Include="users.json" />
   </ItemGroup>
   <ItemGroup>

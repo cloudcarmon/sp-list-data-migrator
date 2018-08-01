@@ -19,7 +19,9 @@ namespace ListDataMigrator.Exporter
 
             cache.Set(SharePointCacheKeys.CONTENT_TYPE_MAPPING, contentTypeMapping, policy);
             cache.Set(CacheKeys.FILE_DIRECTORY, args.OutputPath, policy);
-            // Json load export 
+
+            var exportConfig = JsonUtility.FromFile<ExportConfig>(args.ExportConfigFile);
+            cache.Set(CacheKeys.EXPORT_MODEL, exportConfig, policy);
         }
 
         public void Run()

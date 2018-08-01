@@ -208,11 +208,13 @@
     <Compile Include="CacheKeys.cs" />
     <Compile Include="Exporter.cs" />
     <Compile Include="Models\CommandLineArguments.cs" />
+    <Compile Include="Models\Export.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="export.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
